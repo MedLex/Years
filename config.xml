@@ -5,6 +5,7 @@
 	version="1.0.0">
   <name>Years</name>
   <description>Years steps investigating the likelyhood of Pulmonary Embolism</description>
+  <repo>https://github.com/MedLex/Years.git</repo>
   <author href="http://alexanderengberts.nl" email="info@alexanderengberts.nl">MedLex</author>
   <gap:platform name="ios" />
   <gap:platform name="android" />
