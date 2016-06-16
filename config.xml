@@ -3,8 +3,8 @@
 	id="nl.alexanderengberts.years"
 	versionCode="10"
 	version="1.0.0">
-  <name>Bridging</name>
-  <description>Bepaling bridging protocol</description>
+  <name>Years</name>
+  <description>Years steps investigating the likelyhood of Pulmonary Embolism</description>
   <author href="http://alexanderengberts.nl" email="info@alexanderengberts.nl">MedLex</author>
   <gap:platform name="ios" />
   <gap:platform name="android" />
