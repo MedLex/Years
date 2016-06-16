@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2015 MedLex BV
+
+    http://www.alexanderengberts.nl
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.
+-->
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="msapplication-tap-highlight" content="no" />
+      <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<!--      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, content="width=device-width" />
+      <link rel="stylesheet" type="text/css" href="css/years.css" />
+      <link rel="stylesheet" type="text/css" href="css/checkbox.css" />
+      
+      <script type="text/javascript" src="js/years.js"></script>
+    <title>YEARS</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="headWrap">
+            <div id="header">
+                <div id="text">Clinical Decision Rule</div>
+            </div>
+            <div id="icon"></div>
+        </div>
+        <div id="ycdr">
+            <table>
+                <tr>
+                    <td valign="middle">
+                        <input id="signs" type="checkbox" name="item" onclick="checkYears();" />
+                        <label for="signs">&nbsp;&nbsp;Clinical signs of Deep Venous Trombosis</label><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="middle">
+                        <input id="hemo" type="checkbox" name="item" onclick="checkYears();" />
+                        <label for="hemo">&nbsp;&nbsp;Hemoptysis</label><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="middle">
+                        <input id="alternative" type="checkbox" name="item" onclick="checkYears();" />
+                        <label for="alternative">&nbsp;&nbsp;Alternative diagnosis less likely than PE</label><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="ddimer" onclick="onClickDdimer ();">continue with 0 Years items</div>
+        <div id="measure">
+    	    <table width="95%" style="border-collapse:collapse;">
+    	        <tr>
+    	            <td valign="middle" style="width:30px;">
+    	                <input id="low" type="radio" name="dresult" value="0" onclick="calcResult();" />
+    	            </td>
+    	            <td valign="middle">
+    	                <label id="lowLabel" for="low">&lt; 500ng/ml</label>
+    	            </td>
+    	        </tr>
+    	        <tr>
+    	            <td valign="middle" style="width:30px;">
+    	                <input id="high" type="radio" name="dresult" value="1" onclick="calcResult();" />
+    	            </td>
+    	            <td valign="middle">
+    	                <label id="highLabel" for="high">&gt;= 500ng/ml</label>
+    	            </td>
+    	        </tr>
+    	    </table>
+        </div>
+        <div id="show"></div>
+        <div id="opening">
+            <div class="name">YEARS</div><br />
+            <div class="image"></div>
+            <div class="disclaim">
+                <p>Deze programmatuur kan u ondersteunen bij het bepalen van de noodzaak van een CTPA bij een verdenking van pulmonaire embolie.
+                   Deze bepaling vindt plaats op basis van objectieve regels volgens de Years systematiek.</p>
+                <p>Het is uitdrukkelijk uw eigen verantwoordlijkheid dat de keuze juist wordt gemaakt</p>
+                <p>MedLex wijst nadrukkelijk iedere verantwoordlijkheid af voor onjuiste keuzes, ook als deze worden veroorzaakt
+                   door fouten in deze programmatuur of de gegevens die er aan ten grondslag liggen</p>
+                <p>Door gebruik te maken van deze software verklaart u zich akkoord met deze voorwaarden</p>
+                <div id="accept" onclick="onClickAccepteer();">Accepteer</div>
+            </div>
+        </div>
+            <div class="medlex"></div>
+    </div>
+    <script type="text/javascript">
+        initialize();
+    </script>
+</body>
+
+</html>
