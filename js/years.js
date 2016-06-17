@@ -111,6 +111,10 @@ function showResult ()
     var nItems;
     
     nItems = getNrItems ();
+    vHTML += '<p>' + nItems + ' Years item';
+    if (nItems != 1)
+        vHTML += 's';
+    vHTML += '</p>
     if (nItems > 0)
         vHTML += '<ul>';
     if (document.getElementById ('signs').checked)
@@ -122,10 +126,7 @@ function showResult ()
     if (nItems > 0)
         vHTML += '</ul>';
 
-    vHTML += '<p>' + nItems + ' Years item';
-    if (nItems != 1)
-        vHTML += 's';
-    vHTML += '</p><p>';
+    vHTML += '<p>';
     if (document.getElementById ('high').checked)
     {
     	if (nItems == 0)
