@@ -31,7 +31,7 @@ function checkYears ()
     	if (vItems[i].checked)
     	    nItems += 1;
     }
-    vHTML = 'continue with ' + nItems + ' Years item';
+    vHTML = 'Continue with ' + nItems + ' Years item';
     if (   nItems == 0
         || nItems > 1)
         vHTML += 's';
@@ -46,10 +46,8 @@ function checkYears ()
     document.getElementById ('show').style.display = 'none';
 }
 
-function onClickDdimer ()
+function getNrItems()
 {
-    var vLow   = document.getElementById ('lowLabel');
-    var vHigh  = document.getElementById ('highLabel');
     var vItems = document.getElementsByName ('item');
     var nItems = 0;
     
@@ -58,6 +56,17 @@ function onClickDdimer ()
     	if (vItems[i].checked)
     	    nItems += 1;
     }
+    return nItems;
+}
+
+function onClickDdimer ()
+{
+    var vLow   = document.getElementById ('lowLabel');
+    var vHigh  = document.getElementById ('highLabel');
+    var vItems;
+    var nItems = 0;
+    
+    nItems = getNrItems ();
     if (nItems == 0)
     {
         vLow.innerHTML = 'HS D-dimer &lt; 1000ng/ml';
@@ -84,28 +93,57 @@ function onClickDdimer ()
     document.getElementById ('show').style.display = 'none';
 }
 
-function calcResult ()
+function enableShow ()
 {
-    var vResult = document.getElementById ('show');
+
+    if (document.getElementById ('high').checked)
+        document.getElementById ('show').style.display = 'block';
+    else if (document.getElementById ('low').checked)
+        document.getElementById ('show').style.display = 'block';
+    else
+        document.getElementById ('show').style.display = 'none';
+}
+
+function showResult ()
+{
+    var vResult = document.getElementById ('result');
+    var vHTML = '<br />';
+    var nItems;
     
+    nItems = getNrItems ();
+    if (nItems > 0)
+        vHTML += '<ul>';
+    if (document.getElementById ('signs').checked)
+    	vHTML += '<li>Clinical signs of Deep Venous Trombosis</li>';
+    if (document.getElementById ('hemo').checked)
+    	vHTML += '<li>Hemoptysis</li>';
+    if (document.getElementById ('alternative').checked)
+    	vHTML += '<li>Alternative diagnosis less likely than PE</li>';
+    if (nItems > 0)
+        vHTML += '</ul>';
+
+    vHTML += '<p>' + nItems + ' Years item';
+    if (nItems != 1)
+        vHTML += 's';
+    vHTML += '</p><p>';
     if (document.getElementById ('high').checked)
     {
-        vResult.innerHTML = 'Conclusion: CTPA';
-        vResult.style.background = '#f10202';
-        vResult.style.display = 'block';
+    	if (nItems == 0)
+    	    vHTML += 'HS D-dimer &gt;= 1000ng/ml';
+    	else
+    	    vHTML += 'HS D-dimer &gt;= 500ng/ml';
+        vHTML += '</p><p style="color:#f10202;">Conclusion: CTPA</p>';
     }
     else if (document.getElementById ('low').checked)
     {
-        vResult.innerHTML = 'Conclusion: No Pulmonary Embolism';
-        vResult.style.background = '#1ef102';
-        vResult.style.display = 'block';
+    	if (nItems == 0)
+    	    vHTML += 'HS D-dimer &lt; 1000ng/ml';
+    	else
+    	    vHTML += 'HS D-dimer &lt; 500ng/ml';
+        vHTML += '</p><p style="color:#1ef102;">Conclusion: No Pulmonary Embolism</p>';
     }
-    else
-    {
-        vResult.innerHTML = '';
-        vResult.style.background = '#ffffff';
-        vResult.style.display = 'none';
-    }
+    vResult.innerHTML = vHTML;
+    fade ('result', true);
 }
 
 function onClickAccepteer ()
@@ -137,4 +175,20 @@ function fade (szObject, bFadeIn)
         vDiv.style.webkitTransform = 'scale(0)';
         vDiv.style.mozTransform = 'scale(0)';
     }
+}
+
+function redo()
+{
+    var vItems = document.getElementsByName ('item');
+    var vDimer = document.getElementById ('measure');
+    vDimer.style.height = '0px';
+    
+    for (var i=0; i < vItems.length; i++)
+    	vItems[i].checked = false;
+    vItems = document.getElementsByName ('dresult');
+    for (var i=0; i < vItems.length; i++)
+    	vItems[i].checked = false;
+    document.getElementById ('show').style.display = 'none';
+    document.getElementById ('ddimer').innerHTML = 'Continue with 0 Years items';
+    fade ('result', false);
 }

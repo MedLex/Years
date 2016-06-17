@@ -86,7 +86,7 @@ body
     font-size:medium;
     position:absolute;
     top:0px;
-    left:95px;
+    left:85px;
     right:0px;
     bottom:0px;
     padding-left:15px;
@@ -134,6 +134,7 @@ body
     font-weight:bold;
     color:#ffffff;
     background:#8d96ec;
+
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     border-radius:4px;
@@ -174,6 +175,11 @@ body
     font-size:medium;
     font-weight:bold;
     color:#ffffff;
+    background:#8d96ec;
+
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
 
     transition: all 0.4s ease;
     -webkit-transition: all 0.4s ease; /* For Safari 3.1 to 6.0 */
@@ -198,7 +204,7 @@ body
 #opening .name
 {
     position:absolute;
-    top:60px;
+    top:40px;
     left:0px;
     right:0px;
     height:auto;
@@ -212,7 +218,7 @@ body
 #opening .image
 {
     position:absolute;
-    top:130px;
+    top:110px;
     left:0px;
     right:0px;
     height:100px;
@@ -236,7 +242,7 @@ body
 #opening .disclaim
 {
     position:absolute;
-    top:250px;
+    top:220px;
     left:0px;
     right:0px;
     bottom:70px;
@@ -268,4 +274,50 @@ body
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     border-radius:4px;
+}
+
+#redo
+{
+    position:absolute;
+    top:10px;
+    right:5px;
+    background:transparent;
+
+    height:50px;
+    width:50px;
+    background:transparent url("../img/redo1.png") center no-repeat;
+    background-size:50px;
+}
+
+#redo:hover
+{
+    background:transparent url("../img/redo2.png") center no-repeat;
+    background-size:50px;
+}
+
+#result
+{
+    position:absolute;
+    left:0px;
+    right:0px;
+    top:78px;
+    bottom:50px;
+    padding-left:10px;
+    padding-right:10px;
+    margin:0;
+    overflow:hidden;
+    background:#ffffff;
+
+    font-family:arial, helvetica, sans-serif;
+    font-size:medium;
+    font-weight:medium;
+    color:#000000;
+    
+    opacity:0;
+    transform: scale(0);
+    -webkit-transform:scale(0);
+    -moz-transform:scale(0);
+
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease; /* For Safari 3.1 to 6.0 */
 }

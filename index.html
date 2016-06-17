@@ -30,6 +30,7 @@
             <div id="header">
                 <div id="text">Clinical Decision Rule</div>
             </div>
+            <div id="redo" onclick="redo();"></div>
             <div id="icon"></div>
         </div>
         <div id="ycdr">
@@ -54,12 +55,12 @@
                 </tr>
             </table>
         </div>
-        <div id="ddimer" onclick="onClickDdimer ();">continue with 0 Years items</div>
+        <div id="ddimer" onclick="onClickDdimer ();">Continue with 0 Years items</div>
         <div id="measure">
     	    <table width="95%" style="border-collapse:collapse;">
     	        <tr>
     	            <td valign="middle" style="width:30px;">
-    	                <input id="low" type="radio" name="dresult" value="0" onclick="calcResult();" />
+    	                <input id="low" type="radio" name="dresult" value="0" onclick="enableShow();" />
     	            </td>
     	            <td valign="middle">
     	                <label id="lowLabel" for="low">&lt; 500ng/ml</label>
@@ -67,7 +68,7 @@
     	        </tr>
     	        <tr>
     	            <td valign="middle" style="width:30px;">
-    	                <input id="high" type="radio" name="dresult" value="1" onclick="calcResult();" />
+    	                <input id="high" type="radio" name="dresult" value="1" onclick="enableShow();" />
     	            </td>
     	            <td valign="middle">
     	                <label id="highLabel" for="high">&gt;= 500ng/ml</label>
@@ -75,7 +76,8 @@
     	        </tr>
     	    </table>
         </div>
-        <div id="show"></div>
+        <div id="show" onclick="showResult();">Toon</div>
+        <div id="result"></div>
         <div id="opening">
             <div class="name">YEARS</div><br />
             <div class="image"></div>
@@ -89,7 +91,7 @@
                 <div id="accept" onclick="onClickAccepteer();">Accepteer</div>
             </div>
         </div>
-            <div class="medlex"></div>
+        <div class="medlex"></div>
     </div>
     <script type="text/javascript">
         initialize();
