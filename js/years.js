@@ -107,13 +107,19 @@ function enableShow ()
 function showResult ()
 {
     var vResult = document.getElementById ('result');
-    var vHTML = '<br />';
+    var vHTML = '<br /><p>';
     var nItems;
     
     nItems = getNrItems ();
-    vHTML += '<p>' + nItems + ' Years item';
+    if (nItems == 0)
+        vHTML += 'No';
+    else
+        vHTML += nItems;
+    vHTML += ' Years item';
     if (nItems != 1)
         vHTML += 's';
+    if (nItems > 0)
+        vHTML += ':';
     vHTML += '</p>';
     if (nItems > 0)
         vHTML += '<ul>';
