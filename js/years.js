@@ -114,7 +114,7 @@ function showResult ()
     vHTML += '<p>' + nItems + ' Years item';
     if (nItems != 1)
         vHTML += 's';
-    vHTML += '</p>
+    vHTML += '</p>';
     if (nItems > 0)
         vHTML += '<ul>';
     if (document.getElementById ('signs').checked)
