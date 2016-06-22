@@ -18,6 +18,8 @@
  */
 function initialize ()
 {
+    if (getOsVersion () >= 7)
+        document.getElementById ('wrapper').style.top = '20px';
 }
 
 function checkYears ()
@@ -198,4 +200,19 @@ function redo()
     document.getElementById ('show').style.display = 'none';
     document.getElementById ('ddimer').innerHTML = 'Continue with 0 Years items';
     fade ('result', false);
+}
+
+//-----------------------------------------------------------------------------------
+// Welke versie iOS hebben we?
+//
+function getOsVersion()
+{
+    var agent = window.navigator.userAgent,
+    start = agent.indexOf( 'OS ' );
+    var r = 0;
+    
+    if ( /iphone|ipod|ipad|iPhone|iPod|iPad/.test( agent ) && start > -1 )
+        r = window.Number( agent.substr( start + 3, 3 ).replace( '_', '.' ) );
+        
+    return r;
 }
