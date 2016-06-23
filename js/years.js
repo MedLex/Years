@@ -18,8 +18,16 @@
  */
 function initialize ()
 {
+    var vShowVerantwoording = '';
+    
     if (getOsVersion () >= 7)
         document.getElementById ('wrapper').style.top = '20px';
+    vShowVerantwoording = readSetting ('verantwoording');
+    if (   !vShowVerantwoording
+        ||  vShowVerantwoording == '')
+        fade ('verantwoording', true);
+    else
+        document.getElementById ('noShowAgain').checked = true;
 }
 
 function checkYears ()
@@ -215,4 +223,73 @@ function getOsVersion()
         r = window.Number( agent.substr( start + 3, 3 ).replace( '_', '.' ) );
         
     return r;
+}
+
+//------------------------------------------------------------------------------
+// ontrol het menu
+//
+function showMenu (vShow)
+{
+    
+    if (vShow == 0)
+    {
+    	if (g_bFirstMenu)
+    	{
+    	    g_bFirstMenu = false;
+    	    fade ('menuBox', false);
+    	}
+    }
+    else
+    {
+    	var vMenu = document.getElementById ('menuBox');
+    	menuBox.style.right  = '10px';
+    	menuBox.style.top    = '55px';
+    	menuBox.style.bottom = '';
+    	menuBox.style.left   = '';
+    	setTimeout(function () {g_bFirstMenu = true;}, 300);
+    	fade ('menuBox', true);
+    }
+}
+
+//-----------------------------------------------------------------------------------
+// Sla een setting parameter op in de permanente storage
+//
+function saveSetting (szKey, szValue)
+{
+    if(typeof(Storage) !== "undefined")
+    {
+        localStorage.setItem (szKey, szValue);
+    }
+    else
+        alert ('Sorry! No Web Storage support..');
+}
+
+//-----------------------------------------------------------------------------------
+// Haal een setting parameter op uit de permanente storage
+//
+function readSetting (szKey)
+{
+    var szResult = '';
+    
+    if(typeof(Storage) !== "undefined")
+    {
+        szResult = localStorage.getItem(szKey);
+    }
+        
+    return szResult;
+}
+
+function onClickVerant ()
+{
+    var vNoShow = '';
+    if (document.getElementById ('noShowAgain').checked)
+        vNoShow = 'NOSHOW';
+    saveSetting ('verantwoording', vNoShow);
+    
+    fade ('verantwoording', false);
+}
+
+function showVerantwoording ()
+{
+    fade ('verantwoording', true);
 }

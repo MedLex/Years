@@ -25,13 +25,14 @@
 </head>
 
 <body>
-    <div id="stiekum">
+    <div id="stiekum" onclick="showMenu(0);">
         <div id="wrapper">
             <div id="headWrap">
                 <div id="header">
                     <div id="text">Clinical Decision Rule</div>
                 </div>
                 <div id="redo" onclick="redo();"></div>
+                <div id="menu" onclick="showMenu(1);"></div>
                 <div id="icon"></div>
             </div>
             <div id="ycdr">
@@ -79,29 +80,48 @@
             </div>
             <div id="show" onclick="showResult();">Show Result</div>
             <div id="result"></div>
+            <div id="menuBox" onclick="">
+                <ul>
+                    <li><a href="#" class="large" onclick="showVerantwoording();" onmouseup="showVerantwoording();">Introduction</a></li>
+                </ul>
+            </div>
+
+            <div id="verantwoording">
+                <div id="headWrap">
+                    <div id="header">
+                        <div id="text">Clinical Decision Rule</div>
+                    </div>
+                    <div id="icon"></div>
+                </div>
+<!--             <div class="name">YEARS</div><br /> -->
+                <div class="explain">
+                    <h1>Introduction</h1>
+                    <p>The YEARS method is developed to provide an unambiguous set of criteria for determining the necessity of a CPTA
+                       in case of a suspected Pulmonary Embolism</p>
+                    <p>This method is based on a combination of clinical items and the D-dimer test result value. The clinical YEARS items determine the D-dimer threshold</p>
+                    <p>In case of suspected Pulmonary Embolism, the blood D-dimer  must be immediately tested. Then follow the YEARS algorithm in this app</p>
+                    <div class="noshow"><input  style="height:30px;line-height:30px;" id="noShowAgain" type="checkbox" />
+                       <label style="height:30px;line-height:30px;padding-top:4px;" for="noShowAgain">&nbsp;&nbsp;Do not show this message again</label>
+                    </div>
+                    <div id="accept" onclick="onClickVerant();">Sluit</div>
+                </div>
+            </div>
+
             <div id="opening">
                 <div class="name">YEARS</div><br />
-                <div class="image"></div>
                 <div class="disclaim">
+                    <h1>Disclaimer</h1>
                     <p>This software supports you to identify the necessity of a CPTA in case of a suspected Pulmonary Embolism.<br />
                        This app is based on objective criteria, according to the "Years" method.</p>
                     <p>This software only supports your decision process. Making the correct decision is explicitly your own responsibility</p>
                     <p>MedLex declines all responsability for incorrect decisions, even if these are caused by errors in this software
                        or in the data on which is is based.</p>
                     <p>You explicitly accept these terms by using this software</p>
-                    <!--
-                    <p>
-                    <p>Deze programmatuur kan u ondersteunen bij het bepalen van de noodzaak van een CTPA bij een verdenking van pulmonaire embolie.
-                       Deze bepaling vindt plaats op basis van objectieve regels volgens de Years systematiek.</p>
-                    <p>Het is uitdrukkelijk uw eigen verantwoordlijkheid dat de keuze juist wordt gemaakt</p>
-                    <p>MedLex wijst nadrukkelijk iedere verantwoordlijkheid af voor onjuiste keuzes, ook als deze worden veroorzaakt
-                       door fouten in deze programmatuur of de gegevens die er aan ten grondslag liggen</p>
-                    <p>Door gebruik te maken van deze software verklaart u zich akkoord met deze voorwaarden</p>
-                    -->
-                    <div id="accept" onclick="onClickAccepteer();">Accepteer</div>
+                    <div id="accept" onclick="onClickAccepteer();">Accept</div>
                 </div>
             </div>
             <div class="medlex"></div>
+            <div class="lumc"></div>
         </div>
     </div>
     <script type="text/javascript">

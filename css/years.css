@@ -90,7 +90,7 @@ body
     font-size:medium;
     position:absolute;
     top:0px;
-    left:55px;
+    left:50px;
     right:0px;
     bottom:0px;
     padding-left:15px;
@@ -205,7 +205,7 @@ body
     -webkit-transition: all 0.4s ease; /* For Safari 3.1 to 6.0 */
 }
 
-#opening .name
+.name
 {
     position:absolute;
     top:40px;
@@ -217,18 +217,6 @@ body
     font-size:60px;
     color:#000000;
     text-align:center;
-}
-
-#opening .image
-{
-    position:absolute;
-    top:110px;
-    left:0px;
-    right:0px;
-    height:100px;
-    
-    background:transparent url("../img/logo-lumc-eng.png") center no-repeat;
-    background-size:260px;
 }
 
 .medlex
@@ -243,10 +231,39 @@ body
     background-size:120px;
 }
 
-#opening .disclaim
+.lumc
 {
     position:absolute;
-    top:220px;
+    bottom:10px;
+    left:30px;
+    height:60px;
+    width:120px;
+    
+    background:transparent url("../img/logo-lumc-eng.png") left no-repeat;
+    background-size:120px;
+}
+
+.disclaim
+{
+    position:absolute;
+    top:150px;
+    left:0px;
+    right:0px;
+    bottom:60px;
+    
+    padding-left:10px;
+    padding-right:10px;
+    
+    font-family:calibri, arial, helvetica, sans-serig;
+    font-size:small;
+    color:#000000;
+    text-align:left;
+}
+
+.explain
+{
+    position:absolute;
+    top:100px;
     left:0px;
     right:0px;
     bottom:60px;
@@ -299,6 +316,25 @@ body
     background-size:50px;
 }
 
+#menu
+{
+    position:absolute;
+    top:10px;
+    right:60px;
+    background:transparent;
+
+    height:50px;
+    width:50px;
+    background:transparent url("../img/menu1.png") center no-repeat;
+    background-size:50px;
+}
+
+#menu:hover
+{
+    background:transparent url("../img/menu2.png") center no-repeat;
+    background-size:50px;
+}
+
 #result
 {
     position:absolute;
@@ -324,4 +360,111 @@ body
 
     transition: all 0.4s ease;
     -webkit-transition: all 0.4s ease; /* For Safari 3.1 to 6.0 */
+}
+
+#menuBox
+{
+    display:block;
+    position:absolute;
+    background:#dadada;
+    color:#000000;
+    right:10px;
+    top:70px;
+    height:auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left:0;
+    padding-right:0;
+    margin:0;
+    width:auto;
+
+    opacity:0;
+    transform: scale(0);
+    -webkit-transform:scale(0);
+    -moz-transform:scale(0);
+
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+
+#menuBox hr
+{
+    width:100%;
+    height:1px;
+    background: #000000;
+}
+
+#menuBox ul
+{
+    text-decoration:none;
+    list-style-type:none;
+    display: block;
+    margin:0;
+    padding:0;
+}
+
+#menuBox li
+{
+    margin:0;
+}
+
+#menuBox a
+{
+    display:block;
+    text-decoration:none;
+
+    font-family:arial, helvetica, sans-serif;
+    font-size:medium;
+    color:#000000;
+    background-color:#dadada;
+
+    height:35px;
+    line-height:35px;
+    label:pointer;
+    padding-left:20px;
+    padding-right:60px;
+}
+
+#menuBox a:hover
+{
+    background-color:#cdcdcd;
+}
+
+#verantwoording
+{
+    position:absolute;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    background:#ffffff;
+    
+    opacity:0;
+    transform: scale(0);
+    -webkit-transform:scale(0);
+    -moz-transform:scale(0);
+
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.noshow
+{
+    position:absolute;
+    left:10px;
+    bottom:70px;
+    height:28px;
+    line-height:28px;
 }
