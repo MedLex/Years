@@ -16,6 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
+var g_bFirstMenu = true;
+  
 function initialize ()
 {
     var vShowVerantwoording = '';
@@ -28,6 +31,8 @@ function initialize ()
         fade ('verantwoording', true);
     else
         document.getElementById ('noShowAgain').checked = true;
+    document.getElementById ('dimerValue').value = '';
+    document.getElementById ('dimerValue').focus();
 }
 
 function checkYears ()
@@ -48,12 +53,9 @@ function checkYears ()
     var vButton = document.getElementById ('ddimer');
     if (vButton)
         vButton.innerHTML = vHTML;
-    var vDimer = document.getElementById ('measure');
-    vDimer.style.height = '0px';
     vItems = document.getElementsByName ('dresult');
     for (var i=0; i < vItems.length; i++)
     	vItems[i].checked = false;
-    document.getElementById ('show').style.display = 'none';
 }
 
 function getNrItems()
@@ -67,40 +69,6 @@ function getNrItems()
     	    nItems += 1;
     }
     return nItems;
-}
-
-function onClickDdimer ()
-{
-    var vLow   = document.getElementById ('lowLabel');
-    var vHigh  = document.getElementById ('highLabel');
-    var vItems;
-    var nItems = 0;
-    
-    nItems = getNrItems ();
-    if (nItems == 0)
-    {
-        vLow.innerHTML = 'HS D-dimer &lt; 1000ng/ml';
-        vHigh.innerHTML = 'HS D-dimer &gt= 1000ng/ml';
-    }
-    else
-    {
-        vLow.innerHTML = 'HS D-dimer &lt; 500ng/ml';
-        vHigh.innerHTML = 'HS D-dimer &gt= 500ng/ml';
-    }
-    var vHTML = nItems + ' Years item';
-    if (   nItems == 0
-        || nItems > 1)
-        vHTML += 's';
-    var vButton = document.getElementById ('ddimer');
-    if (vButton)
-        vButton.innerHTML = vHTML;
-    var vDimer = document.getElementById ('measure');
-    vDimer.style.height = 'auto';
-    
-    vItems = document.getElementsByName ('dresult');
-    for (var i=0; i < vItems.length; i++)
-    	vItems[i].checked = false;
-    document.getElementById ('show').style.display = 'none';
 }
 
 function enableShow ()
@@ -119,6 +87,7 @@ function showResult ()
     var vResult = document.getElementById ('result');
     var vHTML = '<br /><p>';
     var nItems;
+    var bHigh = false;
     
     nItems = getNrItems ();
     if (nItems == 0)
@@ -143,21 +112,36 @@ function showResult ()
         vHTML += '</ul>';
 
     vHTML += '<p>';
-    if (document.getElementById ('high').checked)
+    var vDimer = document.getElementById ('dimerValue');
+    if (vDimer.value == '')
     {
-    	if (nItems == 0)
-    	    vHTML += 'HS D-dimer &gt;= 1000ng/ml';
-    	else
-    	    vHTML += 'HS D-dimer &gt;= 500ng/ml';
-        vHTML += '</p><p style="color:#f10202;">Conclusion: CTPA</p>';
+    	alert ('You must enter the HS D-dimer blood value before continuing');
+        document.getElementById ('dimerValue').focus();
+    	return ;
     }
-    else if (document.getElementById ('low').checked)
+    var nDimer = parseInt (vDimer.value);
+    if (nDimer >= 1000)
+        bHigh = true;
+    else if (   nDimer >= 500
+             && nItems > 0)
+        bHigh = true;
+    if (bHigh)
     {
     	if (nItems == 0)
-    	    vHTML += 'HS D-dimer &lt; 1000ng/ml';
+    	    vHTML += 'HS D-dimer &gt;= 1000ng/ml (';
     	else
-    	    vHTML += 'HS D-dimer &lt; 500ng/ml';
-        vHTML += '</p><p style="color:#1ef102;">Conclusion: No Pulmonary Embolism</p>';
+    	    vHTML += 'HS D-dimer &gt;= 500ng/ml (';
+    	vHTML += nDimer;
+        vHTML += ')</p><p style="color:#f10202;">CTPA indicated</p>';
+    }
+    else
+    {
+    	if (nItems == 0)
+    	    vHTML += 'HS D-dimer &lt; 1000ng/ml (';
+    	else
+    	    vHTML += 'HS D-dimer &lt; 500ng/ml (';
+    	vHTML += nDimer;
+        vHTML += ')</p><p style="color:#1ef102;">No Pulmonary Embolism indicated</p>';
     }
     vResult.innerHTML = vHTML;
     fade ('result', true);
@@ -166,6 +150,7 @@ function showResult ()
 function onClickAccepteer ()
 {
     fade ('opening', false);
+    document.getElementById ('dimerValue').focus();
 }
 
 //---------------------------------------------------------------------------
@@ -197,17 +182,16 @@ function fade (szObject, bFadeIn)
 function redo()
 {
     var vItems = document.getElementsByName ('item');
-    var vDimer = document.getElementById ('measure');
-    vDimer.style.height = '0px';
     
     for (var i=0; i < vItems.length; i++)
     	vItems[i].checked = false;
     vItems = document.getElementsByName ('dresult');
     for (var i=0; i < vItems.length; i++)
     	vItems[i].checked = false;
-    document.getElementById ('show').style.display = 'none';
     document.getElementById ('ddimer').innerHTML = 'Continue with 0 Years items';
     fade ('result', false);
+    document.getElementById ('dimerValue').value = '';
+    document.getElementById ('dimerValue').focus();
 }
 
 //-----------------------------------------------------------------------------------
@@ -287,6 +271,7 @@ function onClickVerant ()
     saveSetting ('verantwoording', vNoShow);
     
     fade ('verantwoording', false);
+    document.getElementById ('dimerValue').focus();
 }
 
 function showVerantwoording ()

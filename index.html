@@ -35,6 +35,10 @@
                 <div id="menu" onclick="showMenu(1);"></div>
                 <div id="icon"></div>
             </div>
+            <div id="dimerInput">
+                <label for="dimerValue">HS D-dimer (ng/ml)&nbsp;&nbsp;</label>
+                <input id="dimerValue" type="numeric" step="1" />
+            </div>
             <div id="ycdr">
                 <table>
                     <tr>
@@ -57,29 +61,8 @@
                     </tr>
                 </table>
             </div>
-            <div id="ddimer" onclick="onClickDdimer ();">Continue with 0 Years items</div>
-            <div id="measure">
-        	    <table width="95%" style="border-collapse:collapse;">
-        	        <tr>
-        	            <td valign="middle" style="width:30px;">
-        	                <input id="low" type="radio" name="dresult" value="0" onclick="enableShow();" />
-        	            </td>
-        	            <td valign="middle">
-        	                <label id="lowLabel" for="low">&lt; 500ng/ml</label>
-        	            </td>
-        	        </tr>
-        	        <tr>
-        	            <td valign="middle" style="width:30px;">
-        	                <input id="high" type="radio" name="dresult" value="1" onclick="enableShow();" />
-        	            </td>
-        	            <td valign="middle">
-        	                <label id="highLabel" for="high">&gt;= 500ng/ml</label>
-        	            </td>
-        	        </tr>
-        	    </table>
-            </div>
-            <div id="show" onclick="showResult();">Show Result</div>
-            <div id="result"></div>
+            <div id="ddimer" onclick="showResult ();">Continue with 0 Years items</div>
+           <div id="result"></div>
             <div id="menuBox" onclick="">
                 <ul>
                     <li><a href="#" class="large" onclick="showVerantwoording();" onmouseup="showVerantwoording();">Introduction</a></li>
@@ -96,7 +79,7 @@
 <!--             <div class="name">YEARS</div><br /> -->
                 <div class="explain">
                     <h1>Introduction</h1>
-                    <p>The YEARS method is developed to provide an unambiguous set of criteria for determining the necessity of a CPTA
+                    <p>The YEARS method is developed to provide an unambiguous set of criteria for determining the necessity of a CTPA
                        in case of a suspected Pulmonary Embolism</p>
                     <p>This method is based on a combination of clinical items and the D-dimer test result value. The clinical YEARS items determine the D-dimer threshold</p>
                     <p>In case of suspected Pulmonary Embolism, the blood D-dimer  must be immediately tested. Then follow the YEARS algorithm in this app</p>
@@ -111,7 +94,7 @@
                 <div class="name">YEARS</div><br />
                 <div class="disclaim">
                     <h1>Disclaimer</h1>
-                    <p>This software supports you to identify the necessity of a CPTA in case of a suspected Pulmonary Embolism.<br />
+                    <p>This software supports you to identify the necessity of a CTPA in case of a suspected Pulmonary Embolism.<br />
                        This app is based on objective criteria, according to the "Years" method.</p>
                     <p>This software only supports your decision process. Making the correct decision is explicitly your own responsibility</p>
                     <p>MedLex declines all responsability for incorrect decisions, even if these are caused by errors in this software
