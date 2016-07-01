@@ -32,7 +32,7 @@ function initialize ()
     else
         document.getElementById ('noShowAgain').checked = true;
     document.getElementById ('dimerValue').value = '';
-    document.getElementById ('dimerValue').focus();
+//    document.getElementById ('dimerValue').focus();
 }
 
 function checkYears ()
@@ -150,7 +150,7 @@ function showResult ()
 function onClickAccepteer ()
 {
     fade ('opening', false);
-    document.getElementById ('dimerValue').focus();
+//    document.getElementById ('dimerValue').focus();
 }
 
 //---------------------------------------------------------------------------
@@ -271,7 +271,7 @@ function onClickVerant ()
     saveSetting ('verantwoording', vNoShow);
     
     fade ('verantwoording', false);
-    document.getElementById ('dimerValue').focus();
+//    document.getElementById ('dimerValue').focus();
 }
 
 function showVerantwoording ()
