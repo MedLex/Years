@@ -141,7 +141,7 @@ function showResult ()
     	else
     	    vHTML += 'HS D-dimer &lt; 500ng/ml (';
     	vHTML += nDimer;
-        vHTML += ')</p><p style="color:#1ef102;">No Pulmonary Embolism indicated</p>';
+        vHTML += ')</p><p style="color:#1ef102;">CTPA not indicated, Pulmonary Embolism excluded</p>';
     }
     vResult.innerHTML = vHTML;
     fade ('result', true);
